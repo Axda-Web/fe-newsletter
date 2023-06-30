@@ -1,12 +1,10 @@
-import { useState } from "react";
+import NewsletterModal from "./components/newsletter-modal";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      <div>Vite + React + TS</div>
-    </>
+    <div className="lg:fixed inset-0 lg:flex lg:justify-center lg:items-center">
+      <NewsletterModal />
+    </div>
   );
 }
 
