@@ -47,7 +47,7 @@ const NewsletterModal = () => {
   };
 
   return (
-    <div className="bg-white lg:flex lg:flex-row-reverse lg:justify-center lg:items-center  lg:p-6 lg:rounded-[36px] lg:gap-x-10 lg:w-fit">
+    <div className="bg-white lg:flex lg:flex-row-reverse lg:justify-center lg:items-center lg:p-6 lg:rounded-[36px] lg:gap-x-10 lg:w-fit">
       <div>
         <picture>
           <source
