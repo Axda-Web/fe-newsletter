@@ -5,14 +5,18 @@ export default {
     extend: {
       colors: {
         "dark-navy": "#242742",
+        "light-navy": "#24274280",
         "pale-navy": "#36384D",
         vermellion: "#FF6155",
+        "light-gray": "#19182B40",
       },
       gradientColorStops: {
+        // TODO: Theme gradient doesn't seems to work.. Find where the problem is coming from.
         "primary-gradient": "linear-gradient(#FF6A3A, #FF527B)",
       },
       fontSize: {
-        heading: "3.5rem",
+        "heading-desktop": "3.5rem",
+        "heading-mobile": "2.5rem",
         body: "1rem",
         "body-small": "0.75rem",
       },
