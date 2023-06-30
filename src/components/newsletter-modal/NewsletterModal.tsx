@@ -1,4 +1,7 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { EmailSchema } from "../../zod.schema";
+import { Email } from "../../type";
 
 import ButttonCta from "../button-cta";
 
@@ -20,7 +23,6 @@ const ListItem = ({ content }: ListItemProps) => {
 };
 
 const NewsletterModal = () => {
-  const [email, setEmail] = useState("");
   const listItemData = [
     {
       id: 1,
@@ -36,14 +38,15 @@ const NewsletterModal = () => {
     },
   ];
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const { value: emailValue } = event.target;
-    setEmail(emailValue);
-  };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Email>({ resolver: zodResolver(EmailSchema) });
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    console.log("email", email);
+  const onSubmit = (data: Email) => {
+    console.log("🚀 ~ file: NewsletterModal.tsx:48 ~ formSubmit ~ data:", data);
+    // Submit data to backend
   };
 
   return (
@@ -77,19 +80,28 @@ const NewsletterModal = () => {
             <ListItem key={item.id} content={item.content} />
           ))}
         </ul>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div>
-            <label className="text-body-small font-bold" htmlFor="email">
-              Email address
-            </label>
+            <div className="flex justify-between items-center">
+              <label className="text-body-small font-bold" htmlFor="email">
+                Email address
+              </label>
+              {errors?.email && (
+                <span className="text-body-small font-bold text-red-400">
+                  Valid email required
+                </span>
+              )}
+            </div>
             <input
-              className="w-full border border-light-gray hover:border-dark-navy focus:border-dark-navy rounded-lg px-6 py-4 mt-2 mb-6 placeholder:text-light-navy placeholder:hover:text-dark-navy placeholder:focus:text-dark-navy transition-colors duration-300"
+              className={`w-full border ${
+                !errors?.email
+                  ? "border-light-gray hover:border-dark-navy focus:border-dark-navy placeholder:text-light-navy placeholder:hover:text-dark-navy placeholder:focus:text-dark-navy"
+                  : "border-red-400 hover:border-red-400 focus:border-red-400 placeholder:text-red-400 placeholder:hover:text-red-400 placeholder:focus:text-red-400"
+              }  rounded-lg px-6 py-4 mt-2 mb-6 transition-colors duration-300 bg-[#FF615526]`}
               type="email"
-              name="email"
               id="email"
-              onChange={handleChange}
-              value={email}
               placeholder="email@company.com"
+              {...register("email")}
             />
           </div>
           <ButttonCta type="submit" text="Subscribe to monthly newsletter" />
