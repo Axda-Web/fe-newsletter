@@ -1,12 +1,13 @@
-import NewsletterModal from "./components/newsletter-modal";
-import ConfirmationModal from "./components/confirmation-modal";
+import { BrowserRouter } from "react-router-dom";
+import Router from "./pages/Router";
 
 function App() {
   return (
-    <div className="lg:fixed inset-0 lg:flex lg:justify-center lg:items-center">
-      <NewsletterModal />
-      {/* <ConfirmationModal /> */}
-    </div>
+    <BrowserRouter>
+      <div className="lg:fixed inset-0 lg:flex lg:justify-center lg:items-center">
+        <Router />
+      </div>
+    </BrowserRouter>
   );
 }
 

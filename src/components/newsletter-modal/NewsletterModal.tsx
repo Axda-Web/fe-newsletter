@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useNavigate } from "react-router-dom";
 import { EmailSchema } from "../../zod.schema";
 import { Email } from "../../type";
 
@@ -23,6 +24,7 @@ const ListItem = ({ content }: ListItemProps) => {
 };
 
 const NewsletterModal = () => {
+  const navigate = useNavigate();
   const listItemData = [
     {
       id: 1,
@@ -41,12 +43,15 @@ const NewsletterModal = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<Email>({ resolver: zodResolver(EmailSchema) });
 
   const onSubmit = (data: Email) => {
     console.log("🚀 ~ file: NewsletterModal.tsx:48 ~ formSubmit ~ data:", data);
     // Submit data to backend
+    reset();
+    navigate("/success");
   };
 
   return (
@@ -80,7 +85,7 @@ const NewsletterModal = () => {
             <ListItem key={item.id} content={item.content} />
           ))}
         </ul>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} noValidate>
           <div>
             <div className="flex justify-between items-center">
               <label className="text-body-small font-bold" htmlFor="email">
@@ -95,9 +100,9 @@ const NewsletterModal = () => {
             <input
               className={`w-full border ${
                 !errors?.email
-                  ? "border-light-gray hover:border-dark-navy focus:border-dark-navy placeholder:text-light-navy placeholder:hover:text-dark-navy placeholder:focus:text-dark-navy"
+                  ? "bg-transparent text-dark-navy border-light-gray hover:border-dark-navy focus:border-dark-navy placeholder:text-light-navy placeholder:hover:text-dark-navy placeholder:focus:text-dark-navy"
                   : "border-red-400 hover:border-red-400 focus:border-red-400 placeholder:text-red-400 placeholder:hover:text-red-400 placeholder:focus:text-red-400"
-              }  rounded-lg px-6 py-4 mt-2 mb-6 transition-colors duration-300 bg-[#FF615526]`}
+              }  rounded-lg px-6 py-4 mt-2 mb-6 transition-colors duration-300 bg-[#FF615526] text-red-400`}
               type="email"
               id="email"
               placeholder="email@company.com"
