@@ -55,7 +55,7 @@ const NewsletterModal = () => {
   };
 
   return (
-    <div className="bg-white lg:flex lg:flex-row-reverse lg:justify-center lg:items-center lg:p-6 lg:rounded-[36px] lg:gap-x-10 lg:w-fit">
+    <section className="bg-white lg:flex lg:flex-row-reverse lg:justify-center lg:items-center lg:p-6 lg:rounded-[36px] lg:gap-x-10 lg:w-fit">
       <div>
         <picture>
           <source
@@ -104,7 +104,7 @@ const NewsletterModal = () => {
               className={`w-full border ${
                 !errors?.email
                   ? "bg-transparent text-dark-navy border-light-gray hover:border-dark-navy focus:border-dark-navy placeholder:text-light-navy placeholder:hover:text-dark-navy placeholder:focus:text-dark-navy"
-                  : "border-red-400 hover:border-red-400 focus:border-red-400 placeholder:text-red-400 placeholder:hover:text-red-400 placeholder:focus:text-red-400"
+                  : "border-red-400 hover:border-red-400 focus:border-red-400 placeholder:text-red-400 placeholder:hover:text-red-400 placeholder:focus:text-red-400 placeholder:transition-colors"
               } rounded-lg px-6 py-4 mt-2 mb-6 transition-colors duration-300 bg-[#FF615526] text-red-400`}
               type="email"
               id="email"
@@ -117,9 +117,7 @@ const NewsletterModal = () => {
           <ButttonCta type="submit" text="Subscribe to monthly newsletter" />
         </form>
       </div>
-    </div>
+    </section>
   );
 };
 export default NewsletterModal;
-
-// TODO: Transition effect doesn't seems to work on the input placeholder text, fix it.

@@ -1,7 +1,7 @@
 import ButttonCta from "../button-cta";
 const ConfirmationModal = () => {
   return (
-    <div className="bg-white h-screen lg:h-fit px-6 pt-[150px] pb-10 lg:p-16 lg:rounded-[36px] lg:w-[504px] flex flex-col justify-between">
+    <section className="bg-white h-screen lg:h-fit px-6 pt-[150px] pb-10 lg:p-16 lg:rounded-[36px] lg:w-[504px] flex flex-col justify-between">
       <div>
         <div>
           <img
@@ -20,7 +20,7 @@ const ConfirmationModal = () => {
         </p>
       </div>
       <ButttonCta type="button" text="Dismiss message" />
-    </div>
+    </section>
   );
 };
 export default ConfirmationModal;

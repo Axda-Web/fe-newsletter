@@ -11,7 +11,6 @@ export default {
         "light-gray": "#19182B40",
       },
       gradientColorStops: {
-        // TODO: Theme gradient doesn't seems to work.. Find where the problem is coming from.
         "primary-gradient": "linear-gradient(#FF6A3A, #FF527B)",
       },
       fontSize: {

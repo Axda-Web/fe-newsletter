@@ -16,7 +16,7 @@ const ButttonCta = ({ type, text }: ButtonCtaProps) => {
   return (
     <button
       onClick={handleClick}
-      className="w-full bg-dark-navy text-white font-bold rounded-lg p-[18px] hover:bg-gradient-to-bl from-[#FF6A3A] to-[#FF527B] transition-colors duration-1000"
+      className="w-full bg-dark-navy text-white font-bold rounded-lg p-[18px] hover:bg-gradient-to-bl from-[#FF6A3A] to-[#FF527B] transition-colors duration-300"
       type={type}
     >
       {text}
@@ -24,5 +24,3 @@ const ButttonCta = ({ type, text }: ButtonCtaProps) => {
   );
 };
 export default ButttonCta;
-
-// TODO: Button transition effect is not working, find why.

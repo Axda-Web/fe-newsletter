@@ -4,9 +4,9 @@ import Router from "./pages/Router";
 function App() {
   return (
     <BrowserRouter>
-      <div className="lg:fixed inset-0 lg:flex lg:justify-center lg:items-center">
+      <main className="lg:fixed inset-0 lg:flex lg:justify-center lg:items-center">
         <Router />
-      </div>
+      </main>
     </BrowserRouter>
   );
 }
