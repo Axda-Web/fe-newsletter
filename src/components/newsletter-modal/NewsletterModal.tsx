@@ -74,9 +74,9 @@ const NewsletterModal = () => {
         </picture>
       </div>
       <div className="py-10 px-6 lg:w-[424px]">
-        <h3 className="text-heading-mobile lg:text-heading-desktop font-bold mb-6">
+        <h1 className="text-heading-mobile lg:text-heading-desktop font-bold mb-6">
           Stay updated!
-        </h3>
+        </h1>
         <p className="mb-6">
           Join 60,000+ product managers receiving monthly updates on:
         </p>
@@ -92,7 +92,10 @@ const NewsletterModal = () => {
                 Email address
               </label>
               {errors?.email && (
-                <span className="text-body-small font-bold text-red-400">
+                <span
+                  id="email-error"
+                  className="text-body-small font-bold text-red-400"
+                >
                   Valid email required
                 </span>
               )}
@@ -102,10 +105,12 @@ const NewsletterModal = () => {
                 !errors?.email
                   ? "bg-transparent text-dark-navy border-light-gray hover:border-dark-navy focus:border-dark-navy placeholder:text-light-navy placeholder:hover:text-dark-navy placeholder:focus:text-dark-navy"
                   : "border-red-400 hover:border-red-400 focus:border-red-400 placeholder:text-red-400 placeholder:hover:text-red-400 placeholder:focus:text-red-400"
-              }  rounded-lg px-6 py-4 mt-2 mb-6 transition-colors duration-300 bg-[#FF615526] text-red-400`}
+              } rounded-lg px-6 py-4 mt-2 mb-6 transition-colors duration-300 bg-[#FF615526] text-red-400`}
               type="email"
               id="email"
               placeholder="email@company.com"
+              aria-invalid={errors?.email ? "true" : "false"}
+              aria-errormessage="email-error"
               {...register("email")}
             />
           </div>
