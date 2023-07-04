@@ -33,7 +33,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [GitHub repo](https://github.com/Axda-Web/fe-newsletter)
-- Live Site URL: [Vercel](https://fe-newsletter.vercel.app/)
+- Live Site URL: [Vercel](https://fe-newsletter-bret.vercel.app/)
 
 ## My process
 
