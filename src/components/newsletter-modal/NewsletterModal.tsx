@@ -5,6 +5,7 @@ import { EmailSchema } from "../../zod.schema";
 import { Email } from "../../type";
 
 import ButttonCta from "../button-cta";
+import { useEmailAddressDispatch } from "../../emailAddressContext";
 
 type ListItemProps = {
   content: string;
@@ -24,6 +25,7 @@ const ListItem = ({ content }: ListItemProps) => {
 };
 
 const NewsletterModal = () => {
+  const dispatch = useEmailAddressDispatch();
   const navigate = useNavigate();
   const listItemData = [
     {
@@ -44,12 +46,18 @@ const NewsletterModal = () => {
     register,
     handleSubmit,
     reset,
+    getValues,
     formState: { errors },
   } = useForm<Email>({ resolver: zodResolver(EmailSchema) });
+  console.log(
+    "🚀 ~ file: NewsletterModal.tsx:50 ~ NewsletterModal ~ getValues:",
+    getValues("root.email")
+  );
 
   const onSubmit = (data: Email) => {
     console.log("🚀 ~ file: NewsletterModal.tsx:48 ~ formSubmit ~ data:", data);
     // Submit data to backend
+    dispatch({ type: "SET_EMAIL", payload: data.email });
     reset();
     navigate("/success");
   };
