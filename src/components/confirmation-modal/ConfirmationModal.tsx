@@ -1,5 +1,7 @@
 import ButttonCta from "../button-cta";
+import { useEmailAdress } from "../../emailAddressContext";
 const ConfirmationModal = () => {
+  const emailAddress = useEmailAdress();
   return (
     <section className="bg-white h-screen lg:h-fit px-6 pt-[150px] pb-10 lg:p-16 lg:rounded-[36px] lg:w-[504px] flex flex-col justify-between">
       <div>
@@ -15,8 +17,8 @@ const ConfirmationModal = () => {
         </h3>
         <p className="mb-10">
           A confirmation email has been sent to{" "}
-          <span className="font-bold">ash@loremcompany.com</span>. Please open
-          it and click the button inside to confirm your subscription
+          <span className="font-bold">{emailAddress}</span>. Please open it and
+          click the button inside to confirm your subscription
         </p>
       </div>
       <ButttonCta type="button" text="Dismiss message" />
